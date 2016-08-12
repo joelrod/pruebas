@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"           
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Ejemplo de selección
+        <h:form>
+            <ice:selectOneRadio id="radioSelection" 
+                                value="#{datatableSelect.indexSelected}"
+                                valueChangeListener="#{datatableSelect.valueChangeRadioSelected}"
+                                layout="spread"                                              
+                                partialSubmit="true"
+                                visible="false"
+                                >
+                <f:selectItems value="#{datatableSelect.listaPersona}"
+                               var="persona"                                    
+                               itemLabel="#{persona}" 
+                               itemValue="#{datatableSelect.listaPersona.indexOf(persona)}"/>
+            </ice:selectOneRadio>  
+            <ace:dataTable                
+                value="#{datatableSelect.listaPersona}" 
+                var="itemPrueba"
+                rowIndexVar="rowIndexVar"
+                scrollable="true"
+                scrollHeight="500"                                                                                        
+                alwaysExecuteContents="true"                                                                                           
+                style="font-size: 0.99em"                                                
+                emptyMessage="(0) Registros"
+                >
+                <ace:column headerText="#">       
+                    <ice:radio for="radioSelection" index="#{rowIndexVar}" />                                                                    
+                </ace:column>
+                <ace:column headerText="Nombre">       
+                    <h:outputText value="#{itemPrueba.nombre}"/>
+                </ace:column>
+                <ace:column headerText="Edad">       
+                    <h:outputText value="#{itemPrueba.edad}"/>
+                </ace:column>
+            </ace:dataTable>
+            
+            <h:panelGrid >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Index "/>
+                    <h:outputText value="#{datatableSelect.indexSelected}"/>                   
+                    <h:outputLabel value="Id "/>
+                    <h:outputText value="#{datatableSelect.personaSeleccionada.id}"/>                   
+                    <h:outputLabel value="Nombre "/>
+                    <h:outputText value="#{datatableSelect.personaSeleccionada.nombre}"/>                   
+                    <h:outputLabel value="Edad "/>
+                    <h:outputText value="#{datatableSelect.personaSeleccionada.edad}"/>                   
+                </h:panelGrid>                
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
