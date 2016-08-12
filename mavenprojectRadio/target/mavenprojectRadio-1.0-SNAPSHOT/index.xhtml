@@ -16,8 +16,7 @@
                                 valueChangeListener="#{datatableSelect.valueChangeRadioSelected}"
                                 layout="spread"                                              
                                 partialSubmit="true"
-                                visible="false"
-                                >
+                                visible="false">
                 <f:selectItems value="#{datatableSelect.listaPersona}"
                                var="persona"                                    
                                itemLabel="#{persona}" 
@@ -31,8 +30,7 @@
                 scrollHeight="500"                                                                                        
                 alwaysExecuteContents="true"                                                                                           
                 style="font-size: 0.99em"                                                
-                emptyMessage="(0) Registros"
-                >
+                emptyMessage="(0) Registros" >
                 <ace:column headerText="#">       
                     <ice:radio for="radioSelection" index="#{rowIndexVar}" />                                                                    
                 </ace:column>
@@ -42,8 +40,7 @@
                 <ace:column headerText="Edad">       
                     <h:outputText value="#{itemPrueba.edad}"/>
                 </ace:column>
-            </ace:dataTable>
-            
+            </ace:dataTable>            
             <h:panelGrid >
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Index "/>
