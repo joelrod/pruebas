@@ -43,9 +43,9 @@ public class ChatController implements Serializable{
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		this.nickname = this.nickname.trim();
 		if (this.nickname.contains(" ")){
-			System.err.println("*** Não pode inserir usuário com espaço em branco");
+			System.err.println("*** No se puede agregar usuario con espacio en blanco");
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Não pode inserir usuário com espaço em branco", "")); 
+					"No se puede agregar usuario con espacio en blanco", "")); 
 			
 			return null;
 		}else if (!this.allNicknames.contains(this.nickname)){
@@ -55,19 +55,19 @@ public class ChatController implements Serializable{
 			MessageWs msgWS = new MessageWs();
 			msgWS.setSource(this.nickname);
 			msgWS.setDestination("all");
-			msgWS.setBody("Usuário "+this.nickname+" acabou de entrar");
+			msgWS.setBody("Usuario "+this.nickname+" acaba de entrar");
 			msgWS.setOperation("addUser");
 			msgWS.setTimestamp(new Date());
 			this.sendMsgWSBroadcast(msgWS);
-			// Memorizando o ultimo usuario online
-			// Para add o atributo na sessao WS
+			// Guardando el ultimo usuario en linea
+			// Para add o atributo en la session WS
 			ChatMemory.lastUserOnline = getNickname();
 			
 			return "chat.xhtml?faces-redirect=true";
 		}else{
-			System.err.println("*** Ja existe usuario com esse apelido");
+			System.err.println("*** Ya existe un usuario con ese apellido");
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Apelido já está sendo usado", "")); 
+					"Ya existe un usuario con ese apellido", "")); 
 			return null;
 		}
 	}
@@ -95,7 +95,7 @@ public class ChatController implements Serializable{
 				s.getBasicRemote().sendObject(msgws);
 			}
 		}
-		System.out.println("Mensagem enviada para todos: "+msgws.getOperation());
+		System.out.println("Mensaje enviado para todos los usuarios- : "+msgws.getOperation());
 	}
 	
 	/**

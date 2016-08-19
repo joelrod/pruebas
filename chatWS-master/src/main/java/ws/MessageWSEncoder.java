@@ -10,9 +10,6 @@ import javax.websocket.EndpointConfig;
 
 import model.MessageWs;
 
-/**
- * @author juccelino
- */
 public class MessageWSEncoder implements Encoder.Text<MessageWs>{
 
 	@Override

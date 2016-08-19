@@ -16,61 +16,60 @@
 
             var host = "ws://"+document.location.host + "/chatWS/sendmsg";
 
-            console.log("******* Conexão Aberta");
-
             var wSocket = new WebSocket(host);
 
             wSocket.binaryType = "arraybuffer";
 
             var browserSupport = ("WebSocket" in window) ? true : false;
+            
             function initWebSocket() {    
                 if (browserSupport)
                 {
                     wSocket.onopen = function()
-                    {
-                        console.log("******* Conexion Abierta");
+                    {                        
+                        console.log("******* Conexion Abierta :)");
 
                     };
                 }
                 else
                 {
-                    alert("WebSocket is NOT supported by your Browser!");
+                    alert("WebSocket no es soportado por este navegador... ");
                 }
 
-                wSocket.onmessage = function(evt)
-                {
+                wSocket.onmessage = function(evt){
                     onMessage(evt);
                 };
 
-                wSocket.onclose = function(evt)
-                {	
+                wSocket.onclose = function(evt){	
                     console.log("****** Conexion Cerrada!");
                 };
 
                 wSocket.onerror = function (evt){
-                    console.log("****** Error al conectar ");
+                    console.log("****** Error al intentar conectar al webSocket ");
                     onError(evt);
                 };
             }
 
             function sendText() {
                 var inputTextArea = document.getElementById("chatPanel:insertMSG").value;
+                //usar el usuario en session
                 var myNickName = document.getElementById("chatPanel:myNickName").innerHTML;
 
+                //convertir a objeto prototipe
                 var objMsgWS = new Object();
                 objMsgWS.source = myNickName;
                 objMsgWS.destination = "all";
                 objMsgWS.body = inputTextArea;
                 objMsgWS.timestamp = "";
                 objMsgWS.operation = "sendText";
-
+                
                 var objMsgWSToStr = JSON.stringify(objMsgWS);
 
                 wSocket.send(objMsgWSToStr);
             }
 
             function onMessage(evt) {
-                // called when a message is received
+                // funcion llamada cuando se recibe un mensaje                
                 var receivedMsg = JSON.parse(evt.data);
 
                 if (receivedMsg.operation == "addUser"){
@@ -144,14 +143,14 @@
             }
 
             function logoutUser(user){
-                console.log("*** Usuário logout: "+user);
+                console.log("*** Usuario cerro session: "+user);
                 var userOnList = document.getElementById(user);
                 userOnList.remove(userOnList);
                 wSocket.onclose("logout: "+user);
             }
 
             function onError(evt) {
-                console.log("Deu merda: "+evt.data);
+                console.log("Shinnnnn Falló..¡¡¡¡: "+evt.data);
                 var tableChatMSG = document.getElementById("chatPanel:chatArea");
                 var newRowChatMSG = tableChatMSG.insertRow(-1);
                 var newCellChatMSG = newRowChatMSG.insertCell(-1);
