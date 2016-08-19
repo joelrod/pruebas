@@ -24,6 +24,7 @@ public class MessageWSEncoder implements Encoder.Text<MessageWs>{
 
 	@Override
 	public String encode(MessageWs msgWS) throws EncodeException {
+            System.out.println("@Codificar mensaje "+msgWS);
 		Format formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		String dateStr = formatter.format(msgWS.getTimestamp());
 		return Json.createObjectBuilder()

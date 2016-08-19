@@ -27,7 +27,7 @@
                 {
                     wSocket.onopen = function()
                     {                        
-                        console.log("******* Conexion Abierta :)");
+                        console.log("******* Conexión Abierta :)");
 
                     };
                 }
@@ -41,7 +41,7 @@
                 };
 
                 wSocket.onclose = function(evt){	
-                    console.log("****** Conexion Cerrada!");
+                    console.log("****** Conexión Cerrada!");
                 };
 
                 wSocket.onerror = function (evt){
@@ -118,7 +118,7 @@
 
                 }
 
-                console.log("** Novo Usuário Online: " + user);
+                console.log("** Un nuevo usuario en linea: " + user);
             }
 
             function addMSGArea(user, body, timestamp, destination){
@@ -143,7 +143,7 @@
             }
 
             function logoutUser(user){
-                console.log("*** Usuario cerro session: "+user);
+                console.log("*** Usuario cerró session: "+user);
                 var userOnList = document.getElementById(user);
                 userOnList.remove(userOnList);
                 wSocket.onclose("logout: "+user);

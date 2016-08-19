@@ -26,6 +26,7 @@ public class MessageWSDecoder implements Decoder.Text<MessageWs>{
 
 	@Override
 	public MessageWs decode(String messageText) throws DecodeException {
+            System.out.println("@@Decodificar mensaje recibido "+messageText);
 		MessageWs msgWS = new MessageWs();
 		Date dateOfReceived = new Date();
 		JsonObject jsonObj = Json.createReader(new StringReader(messageText))
