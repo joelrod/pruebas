@@ -3,19 +3,15 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe main responsavel por armazenar todas 
- * as informacoes do chat (usuarios onlines)
- * @author juccelino
- *
+/** 
+ * Clase principal que se encarga de almacenar las sesiones 
+ * FIXME : Mejorar esto haciendo mejor un BEAN de tipo Application 
  */
 public class ChatMemory {
 	
-	// Lista com todos os onlines que os novos usuarios recebem
+	// Lista con los nuevos usuarios
 	public static List<String> allOnlines = new ArrayList<String>();
-
-	// Armazena ultimo usuario que entrou no chat
-	// Usado para add o atributo na sessao do WS
+	
 	public static String lastUserOnline = null;
 	
 }

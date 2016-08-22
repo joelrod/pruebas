@@ -5,27 +5,29 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-       xmlns:p="http://primefaces.org/ui">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Chat WS</title>
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Chat WS</title>
 
-</h:head>
-<h:body>
-      <p:panel visible="#{chatController.createUserPanel}" header="Chat WebSocket">
-        <h:form id="createUser">
-            <p:outputLabel value="#{chatController.ruta}"/>
-          <p:messages autoUpdate="true"/>   
-         <h:panelGrid columns="4" cellspacing="2">
-          <p:outputLabel for="nickname" value="Apelido:" style="color: crimson"/>
-           <p:inputText id="nickname" value="#{chatController.nickname}"
-             style="color: blue" required="true" requiredMessage="Insira o apelido" />
-             
-          <h:commandButton id="go" value="Entrar" action="#{chatController.addUser}" />
-         </h:panelGrid>
-        
-        </h:form>
+    </h:head>
+    <h:body>
+        <p:panel visible="#{chatController.createUserPanel}" header="Chat WebSocket">
+            <h:form id="createUser">
 
-      </p:panel>
-  </h:body>
+                <p:messages autoUpdate="true"/>   
+                <h:panelGrid columns="4" cellspacing="2">
+                    <p:outputLabel for="nickname" value="Nombre:" style="color: crimson"/>
+                    <p:inputText id="nickname" value="#{chatController.nickname}"
+                                 style="color: blue" 
+                                 required="true" 
+                                 requiredMessage="Se requiere el nombre.. :)" />
+                    <h:commandButton id="go" value="Entrar" 
+                                     action="#{chatController.addUser}" />
+                </h:panelGrid>
+
+            </h:form>
+
+        </p:panel>
+    </h:body>
 </html>

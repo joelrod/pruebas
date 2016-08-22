@@ -18,7 +18,7 @@ public class ThreadSender {
 				s.getAsyncRemote().sendText(message);
 			}
 		}
-		System.out.println("Mensagem enviada para todos");
+		System.out.println("Mensaje enviado para todos");
 	}
 
 }

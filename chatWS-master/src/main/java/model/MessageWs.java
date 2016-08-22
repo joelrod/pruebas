@@ -3,6 +3,11 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
+/*
+ El mismo modelo debe esta en el lado del cliente 
+ en caso fuera javascript crear objetos (Object)
+*/
+
 public class MessageWs implements Serializable{
 	
 	private static final long serialVersionUID = -2169420340503250005L;

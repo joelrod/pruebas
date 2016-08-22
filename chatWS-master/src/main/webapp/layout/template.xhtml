@@ -8,8 +8,6 @@
 
         <title>Chat WS</title>
 
-        <!--<h:outputScript name="js/ws.js" />-->
-
         <script type="text/javascript">
 
             /* global chatController */
@@ -20,8 +18,10 @@
 
             wSocket.binaryType = "arraybuffer";
 
+
             var browserSupport = ("WebSocket" in window) ? true : false;
             
+            //init invocado desde el evento onload del template
             function initWebSocket() {    
                 if (browserSupport)
                 {
@@ -55,7 +55,7 @@
                 //usar el usuario en session
                 var myNickName = document.getElementById("chatPanel:myNickName").innerHTML;
 
-                //convertir a objeto prototipe
+                //convertir a objeto prototype, 
                 var objMsgWS = new Object();
                 objMsgWS.source = myNickName;
                 objMsgWS.destination = "all";

@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
-
+//Importantes
 import app.ChatMemory;
 import model.MessageWs;
 import ws.MessageEndPoint;
@@ -31,7 +31,7 @@ public class ChatController implements Serializable{
 	
 	private List<String> allNicknames;
         
-         private String ruta = "ws://localhost:8080/chatWS/sendmsg";
+         //private String ruta = "ws://localhost:8080/chatWS/sendmsg";
 	
 	public ChatController() {
 		this.createUserPanel = true;
@@ -80,9 +80,7 @@ public class ChatController implements Serializable{
 	}
 	
 	/**
-	 * Manda msg broadcast para todos os outros usuarios. 
-	 * Importante: A sessao do WS ainda nao foi criada, quando o usuario envia
-	 * a msg atraves do metodo addUser.
+	 * Manda msg broadcast para todas las sesiones en la lista estatica 
 	 * 
 	 * @param msgws JSON da MSG
 	 * @throws IOException
@@ -95,13 +93,9 @@ public class ChatController implements Serializable{
 				s.getBasicRemote().sendObject(msgws);
 			}
 		}
-		System.out.println("Mensaje enviado para todos los usuarios- : "+msgws.getOperation());
+		System.out.println("Mensaje enviado para los usuarios- : "+msgws.getOperation());
 	}
-	
-	/**
-	 * Metodo utilizado para testar o
-	 * painel de usuarios onlines
-	 */
+		
 	public void insertManyUsers(){
 		for (int i = 0; i < 100; i++) {
 			this.allNicknames.add("teste"+i);
@@ -141,8 +135,8 @@ public class ChatController implements Serializable{
 		this.textMessage = textMessage;
 	}
 
-    public String getRuta() {
-        return ruta;
-    }
+//    public String getRuta() {
+//        return ruta;
+//    }
 
 }
